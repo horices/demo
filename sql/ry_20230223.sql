@@ -160,7 +160,7 @@ create table sys_menu (
 insert into sys_menu values('1', '系统管理', '0', '1', 'system',           null, '', 1, 0, 'M', '0', '0', '', 'system',   'admin', sysdate(), '', null, '系统管理目录');
 insert into sys_menu values('2', '系统监控', '0', '2', 'monitor',          null, '', 1, 0, 'M', '0', '0', '', 'monitor',  'admin', sysdate(), '', null, '系统监控目录');
 insert into sys_menu values('3', '系统工具', '0', '3', 'tool',             null, '', 1, 0, 'M', '0', '0', '', 'tool',     'admin', sysdate(), '', null, '系统工具目录');
-insert into sys_menu values('4', '若依官网', '0', '4', 'http://ruoyi.vip', null, '', 0, 0, 'M', '0', '0', '', 'guide',    'admin', sysdate(), '', null, '若依官网地址');
+-- insert into sys_menu values('4', '若依官网', '0', '4', 'http://ruoyi.vip', null, '', 0, 0, 'M', '0', '0', '', 'guide',    'admin', sysdate(), '', null, '若依官网地址');
 -- 二级菜单
 insert into sys_menu values('100',  '用户管理', '1',   '1', 'user',       'system/user/index',        '', 1, 0, 'C', '0', '0', 'system:user:list',        'user',          'admin', sysdate(), '', null, '用户管理菜单');
 insert into sys_menu values('101',  '角色管理', '1',   '2', 'role',       'system/role/index',        '', 1, 0, 'C', '0', '0', 'system:role:list',        'peoples',       'admin', sysdate(), '', null, '角色管理菜单');
@@ -697,3 +697,61 @@ create table gen_table_column (
   update_time       datetime                                   comment '更新时间',
   primary key (column_id)
 ) engine=innodb auto_increment=1 comment = '代码生成业务表字段';
+
+
+INSERT INTO `rouyi`.`sys_menu` (`menu_id`, `menu_name`, `parent_id`, `order_num`, `path`, `component`, `query`, `is_frame`, `is_cache`, `menu_type`, `visible`, `status`, `perms`, `icon`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES ('1061', '职工管理', '0', '1', 'employee', NULL, NULL, '1', '0', 'M', '0', '0', NULL, 'user', 'admin', '2023-08-28 22:34:13', '', NULL, '');
+INSERT INTO `rouyi`.`sys_menu` (`menu_id`, `menu_name`, `parent_id`, `order_num`, `path`, `component`, `query`, `is_frame`, `is_cache`, `menu_type`, `visible`, `status`, `perms`, `icon`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES ('1062', '职工列表', '1061', '1', 'employee', 'system/employee/index', NULL, '1', '0', 'C', '0', '0', 'system:employee:list', '#', 'admin', '2023-08-28 23:07:27', '', NULL, '职工菜单');
+INSERT INTO `rouyi`.`sys_menu` (`menu_id`, `menu_name`, `parent_id`, `order_num`, `path`, `component`, `query`, `is_frame`, `is_cache`, `menu_type`, `visible`, `status`, `perms`, `icon`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES ('1063', '职工查询', '1062', '1', '#', '', NULL, '1', '0', 'F', '0', '0', 'system:employee:query', '#', 'admin', '2023-08-28 23:07:27', '', NULL, '');
+INSERT INTO `rouyi`.`sys_menu` (`menu_id`, `menu_name`, `parent_id`, `order_num`, `path`, `component`, `query`, `is_frame`, `is_cache`, `menu_type`, `visible`, `status`, `perms`, `icon`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES ('1064', '职工新增', '1062', '2', '#', '', NULL, '1', '0', 'F', '0', '0', 'system:employee:add', '#', 'admin', '2023-08-28 23:07:27', '', NULL, '');
+INSERT INTO `rouyi`.`sys_menu` (`menu_id`, `menu_name`, `parent_id`, `order_num`, `path`, `component`, `query`, `is_frame`, `is_cache`, `menu_type`, `visible`, `status`, `perms`, `icon`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES ('1065', '职工修改', '1062', '3', '#', '', NULL, '1', '0', 'F', '0', '0', 'system:employee:edit', '#', 'admin', '2023-08-28 23:07:27', '', NULL, '');
+INSERT INTO `rouyi`.`sys_menu` (`menu_id`, `menu_name`, `parent_id`, `order_num`, `path`, `component`, `query`, `is_frame`, `is_cache`, `menu_type`, `visible`, `status`, `perms`, `icon`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES ('1066', '职工删除', '1062', '4', '#', '', NULL, '1', '0', 'F', '0', '0', 'system:employee:remove', '#', 'admin', '2023-08-28 23:07:27', '', NULL, '');
+INSERT INTO `rouyi`.`sys_menu` (`menu_id`, `menu_name`, `parent_id`, `order_num`, `path`, `component`, `query`, `is_frame`, `is_cache`, `menu_type`, `visible`, `status`, `perms`, `icon`, `create_by`, `create_time`, `update_by`, `update_time`, `remark`) VALUES ('1067', '职工导出', '1062', '5', '#', '', NULL, '1', '0', 'F', '0', '0', 'system:employee:export', '#', 'admin', '2023-08-28 23:07:27', '', NULL, '');
+
+drop table if exists employee;
+CREATE TABLE `employee` (
+                            `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '职员ID',
+                            `emp_name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '职员姓名',
+                            `sex` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '性别',
+                            `age` varchar(11) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '年龄',
+                            `dept_name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '部门名称',
+                            `emp_degree_name` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '学历',
+                            PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('37', '张一', '男', '25', '业务部', '本科');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('38', '张二', '女', '26', '人事部', '本科');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('39', '张三', '男', '27', '后勤部', '大专');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('40', '张四', '女', '28', '人事部', '大专');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('41', '张五', '男', '29', '后勤部', '大专');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('42', '张六', '女', '29', '后勤部', '本科');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('43', '张七', '男', '33', '业务部', '研究生');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('44', '张八', '男', '32', '业务部', '本科');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('45', '张九', '女', '33', '业务部', '大专');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('46', '李一', '女', '45', '业务部', '研究生');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('47', '李二', '女', '19', '人事部', '本科');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('48', '李三', '男', '28', '业务部', '研究生');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('49', '李四', '女', '46', '后勤部', '研究生');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('50', '李五', '男', '58', '业务部', '大专');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('51', '李六', '女', '22', '人事部', '研究生');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('52', '李七', '男', '26', '后勤部', '大专');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('53', '李八', '男', '25', '人事部', '研究生');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('54', '李九', '女', '29', '后勤部', '研究生');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('55', '王一', '男', '45', '后勤部', '本科');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('56', '王二', '女', '21', '业务部', '本科');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('57', '王三', '男', '21', '业务部', '大专');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('58', '王四', '男', '23', '业务部', '大专');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('59', '王五', '女', '33', '业务部', '大专');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('60', '王六', '男', '45', '人事部', '本科');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('61', '王七', '男', '35', '业务部', '研究生');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('62', '王八', '男', '41', '后勤部', '本科');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('63', '王九', '女', '25', '业务部', '大专');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('64', '赵一', '男', '26', '人事部', '研究生');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('65', '赵二', '男', '20', '后勤部', '本科');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('66', '赵三', '女', '21', '人事部', '研究生');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('67', '赵四', '男', '19', '后勤部', '研究生');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('68', '赵五', '女', '35', '后勤部', '大专');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('69', '赵六', '男', '24', '业务部', '研究生');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('70', '赵七', '男', '29', '业务部', '大专');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('71', '赵八', '女', '33', '业务部', '研究生');
+INSERT INTO `rouyi`.`employee` (`id`, `emp_name`, `sex`, `age`, `dept_name`, `emp_degree_name`) VALUES ('72', '赵九', '男', '45', '业务部', '本科');
+
