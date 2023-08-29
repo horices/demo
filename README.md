@@ -9,8 +9,8 @@
 2. 启动项目 npm run dev
 
 ### 访问地址
-1. 后台默认访问地址： http://localhost
-2. 接口文档默认地址：http://localhost:8080/doc.html
+1. 后台默认访问地址： http://localhost ![](./doc/login.png)  ![](./doc/admin.png)
+2. 接口文档默认地址：http://localhost:8080/doc.html ![](./doc/doc.png)
 
 ### shell 脚本地址
 1. bin/linux1.sh (在给定文件中搜索指定内容，并将搜索结果(含内容出现的行号)保存到新的文件中，同时结果输出到控制台)
