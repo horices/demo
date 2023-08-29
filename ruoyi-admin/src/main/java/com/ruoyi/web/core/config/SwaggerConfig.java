@@ -24,7 +24,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 /**
  * Swagger2的接口配置
- * 
+ *
  * @author ruoyi
  */
 @Configuration
@@ -61,11 +61,11 @@ public class SwaggerConfig
                 // .apis(RequestHandlerSelectors.basePackage("com.ruoyi.project.tool.swagger"))
                 // 扫描所有 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
-                .build()
+                .build();
                 /* 设置安全模式，swagger可以设置访问token */
-                .securitySchemes(securitySchemes())
-                .securityContexts(securityContexts())
-                .pathMapping(pathMapping);
+//                .securitySchemes(securitySchemes())
+//                .securityContexts(securityContexts())
+//                .pathMapping(pathMapping);
     }
 
     /**
